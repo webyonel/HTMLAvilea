@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avilea · Panel de Administración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- ============== LOGIN ============== -->
+  <section class="login-screen" id="loginScreen">
+    <div class="login-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+
+    <div class="login-card">
+      <a href="index.html" class="logo logo-center">
+        <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+          <circle cx="13" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
+          <circle cx="27" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
+          <line x1="19" y1="20" x2="21" y2="20" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-name">Avilea</span>
+          <span class="logo-sub">Panel Admin</span>
+        </div>
+      </a>
+
+      <div class="login-head">
+        <h1>Bienvenido de vuelta</h1>
+        <p>Accede al panel de administración para gestionar el catálogo.</p>
+      </div>
+
+      <form class="login-form" id="loginForm" novalidate>
+        <div class="field">
+          <label for="loginEmail">Correo electrónico</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <input type="email" id="loginEmail" placeholder="tu@correo.com" autocomplete="username" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="loginPassword">Contraseña</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required />
+            <button type="button" class="toggle-pass" id="togglePass" aria-label="Mostrar contraseña">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="login-error" id="loginError" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Credenciales incorrectas. Inténtalo de nuevo.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">
+          Iniciar sesión
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+
+      <div class="login-foot">
+        <a href="index.html">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Volver al sitio
+        </a>
+        <span>·</span>
+        <span>Acceso restringido</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== ADMIN PANEL ============== -->
+  <div class="admin-shell" id="adminShell" hidden>
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <a href="index.html" class="logo">
+        <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+          <circle cx="13" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
+          <circle cx="27" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
+          <line x1="19" y1="20" x2="21" y2="20" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-name">Avilea</span>
+          <span class="logo-sub">Admin · v1</span>
+        </div>
+      </a>
+
+      <nav class="admin-nav">
+        <span class="nav-section">General</span>
+        <a href="#dashboard" class="admin-link active" data-view="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="#productos" class="admin-link" data-view="productos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+          Productos
+          <span class="nav-badge" id="totalBadge">0</span>
+        </a>
+        <a href="#nuevo" class="admin-link" data-view="nuevo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Nuevo producto
+        </a>
+
+        <span class="nav-section">Sitio</span>
+        <a href="index.html" target="_blank" class="admin-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver sitio
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="user-card">
+          <div class="avatar">O</div>
+          <div>
+            <strong>Onel Martínez</strong>
+            <span>Administrador</span>
+          </div>
+        </div>
+        <button class="btn-logout" id="logoutBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Cerrar sesión
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+
+      <!-- Top bar -->
+      <header class="admin-top">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <span class="top-eyebrow">Panel de control</span>
+          <h2 class="top-title" id="topTitle">Dashboard</h2>
+        </div>
+        <div class="top-actions">
+        </div>
+      </header>
+
+      <!-- Dashboard view -->
+      <section class="view view-dashboard active" data-view="dashboard">
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="kpi-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div>
+              <span class="kpi-label">Productos totales</span>
+              <span class="kpi-value" id="kpiTotal">0</span>
+            </div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-icon kpi-icon-2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <span class="kpi-label">Precio promedio</span>
+              <span class="kpi-value" id="kpiAvg">$0 MN</span>
+            </div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-icon kpi-icon-3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div>
+              <span class="kpi-label">Categorías</span>
+              <span class="kpi-value" id="kpiCats">0</span>
+            </div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-icon kpi-icon-4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div>
+              <span class="kpi-label">Más caro</span>
+              <span class="kpi-value" id="kpiMax">$0 MN</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-row">
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Productos recientes</h3>
+              <a href="#" data-go="productos" class="panel-link">Ver todos →</a>
+            </div>
+            <div class="recent-list" id="recentList"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Acciones rápidas</h3>
+            </div>
+            <div class="quick-actions">
+              <button class="qa" data-go="nuevo">
+                <div class="qa-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </div>
+                <div>
+                  <strong>Agregar producto</strong>
+                  <span>Sube una nueva armadura al catálogo</span>
+                </div>
+              </button>
+              <button class="qa" data-go="productos">
+                <div class="qa-icon qa-icon-2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                </div>
+                <div>
+                  <strong>Exportar catálogo</strong>
+                  <span>Descarga el listado en JSON</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Productos view -->
+      <section class="view view-productos" data-view="productos" hidden>
+        <div class="panel">
+          <div class="panel-head panel-head-toolbar">
+            <div class="toolbar">
+              <div class="search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" id="searchProduct" placeholder="Buscar producto…" />
+              </div>
+              <select id="filterCategory" class="select">
+                <option value="all">Todas las categorías</option>
+                <option value="femenino">Femenino</option>
+                <option value="masculino">Masculino</option>
+                <option value="unisex">Unisex</option>
+                <option value="sol">Sol</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" data-go="nuevo">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Nuevo producto
+            </button>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table" id="productTable">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Categoría</th>
+                  <th>Precio</th>
+                  <th class="th-actions">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="productTableBody"></tbody>
+            </table>
+            <div class="empty-state" id="emptyState" hidden>
+              <div class="empty-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <h4>No hay productos</h4>
+              <p>Empieza creando el primero.</p>
+              <button class="btn btn-primary" data-go="nuevo">Crear producto</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nuevo producto view -->
+      <section class="view view-nuevo" data-view="nuevo" hidden>
+        <div class="form-grid">
+          <form class="panel form-panel" id="productForm" novalidate>
+            <div class="panel-head">
+              <h3>Información del producto</h3>
+              <p class="panel-sub">Completa los datos de la nueva armadura.</p>
+            </div>
+
+            <div class="field">
+              <label for="pName">Nombre del producto</label>
+              <div class="input-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                <input type="text" id="pName" placeholder="Ej. Aria" required maxlength="40" />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="pCategory">Categoría</label>
+                <div class="input-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h7v7H3z"/><path d="M14 3h7v7h-7z"/><path d="M14 14h7v7h-7z"/><path d="M3 14h7v7H3z"/></svg>
+                  <select id="pCategory" required class="input-select">
+                    <option value="">Selecciona…</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="unisex">Unisex</option>
+                    <option value="sol">Sol</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="pPrice">Precio (MN)</label>
+                <div class="input-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  <input type="number" id="pPrice" placeholder="0.00" min="0" step="0.01" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Imagen del producto</label>
+              <div class="upload-zone" id="uploadZone">
+                <input type="file" id="pImage" accept="image/*" hidden />
+                <div class="upload-content" id="uploadContent">
+                  <div class="upload-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  </div>
+                  <strong>Arrastra una imagen aquí</strong>
+                  <span>o haz clic para seleccionar</span>
+                  <em>PNG, JPG, WEBP · máx. 2MB</em>
+                </div>
+                <img id="uploadPreview" alt="" hidden />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-ghost" id="cancelBtn">Cancelar</button>
+              <button type="submit" class="btn btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Guardar producto
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
