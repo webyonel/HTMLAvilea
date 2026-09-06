@@ -2,7 +2,7 @@
    AVILEA · Interactividad
    ============================================= */
 
-/* ---------- Catálogo con SVGs de armaduras ---------- */
+/* ---------- Catálogo con SVGs ---------- */
 const products = [
   {
     id: 1,
@@ -11,7 +11,8 @@ const products = [
     catLabel: 'Femenino',
     price: 1850,
     shape: 'round',
-    color: '#1c4d6e'
+    color: '#1c4d6e',
+    image: 'img/espejuelos_1.webp'
   },
   {
     id: 2,
@@ -20,7 +21,8 @@ const products = [
     catLabel: 'Femenino',
     price: 2100,
     shape: 'cat',
-    color: '#c89968'
+    color: '#c89968',
+    image: 'img/espejuelos_2.avif'
   },
   {
     id: 3,
@@ -29,7 +31,8 @@ const products = [
     catLabel: 'Masculino',
     price: 2300,
     shape: 'rect',
-    color: '#0a1a26'
+    color: '#0a1a26',
+    image: 'img/espejuelos_3.jpeg'
   },
   {
     id: 4,
@@ -38,7 +41,8 @@ const products = [
     catLabel: 'Masculino',
     price: 2450,
     shape: 'square',
-    color: '#2a2a2a'
+    color: '#2a2a2a',
+    image: 'img/espejuelos_4.webp'
   },
   {
     id: 5,
@@ -47,7 +51,8 @@ const products = [
     catLabel: 'Unisex',
     price: 1750,
     shape: 'round',
-    color: '#7a8a99'
+    color: '#7a8a99',
+    image: 'img/espejuelos_5.jpeg'
   },
   {
     id: 6,
@@ -56,25 +61,122 @@ const products = [
     catLabel: 'Unisex',
     price: 1900,
     shape: 'rimless',
-    color: '#41566a'
+    color: '#41566a',
+    image: 'img/espejulos_6.jpeg'
   },
   {
     id: 7,
     name: 'Solar Aventura',
-    category: 'sol',
-    catLabel: 'Sol',
+    category: 'unisex',
+    catLabel: 'Unisex',
     price: 2200,
     shape: 'aviator',
-    color: '#1c4d6e'
+    color: '#1c4d6e',
+    image: 'img/espejuelos_7.jpeg'
   },
   {
     id: 8,
     name: 'Solar Tropico',
-    category: 'sol',
-    catLabel: 'Sol',
+    category: 'unisex',
+    catLabel: 'Unisex',
     price: 1980,
     shape: 'wayfarer',
-    color: '#0a1a26'
+    color: '#0a1a26',
+    image: 'img/espejuelos_8.jpeg'
+  },
+  // ---------- Accesorios ----------
+  {
+    id: 9,
+    name: 'Estuche Rígido',
+    category: 'accesorios',
+    catLabel: 'Accesorios',
+    price: 450,
+    shape: 'case',
+    color: '#1c4d6e',
+    image: 'img/estuche%3F1.jpg'
+  },
+  {
+    id: 10,
+    name: 'Estuche Semirrígido',
+    category: 'accesorios',
+    catLabel: 'Accesorios',
+    price: 280,
+    shape: 'case',
+    color: '#6d28d9',
+    image: 'img/estuche%20_2.jpeg'
+  },
+  {
+    id: 12,
+    name: 'Cordón Deportivo',
+    category: 'accesorios',
+    catLabel: 'Accesorios',
+    price: 220,
+    shape: 'cord',
+    color: '#0a1a26',
+    image: 'img/cordon%291.webp'
+  },
+  {
+    id: 13,
+    name: 'Cordón de Cuero',
+    category: 'accesorios',
+    catLabel: 'Accesorios',
+    price: 320,
+    shape: 'cord',
+    color: '#7a4a2a',
+    image: 'img/cordones_2.jpeg'
+  },
+  {
+    id: 14,
+    name: 'Líquido Limpiador 30ml',
+    category: 'accesorios',
+    catLabel: 'Accesorios',
+    price: 280,
+    shape: 'bottle',
+    color: '#1c4d6e',
+    image: 'img/producto_limpieza_lentes.webp'
+  },
+  // ---------- Estuches ----------
+  {
+    id: 15,
+    name: 'Estuche de Tela',
+    category: 'accesorios',
+    catLabel: 'Accesorios',
+    price: 220,
+    shape: 'case',
+    color: '#41566a',
+    image: 'img/estuche_3.jpg'
+  },
+  // ---------- Productos de limpieza ----------
+  {
+    id: 17,
+    name: 'Toallitas Limpiadoras x20',
+    category: 'accesorios',
+    catLabel: 'Accesorios',
+    price: 320,
+    shape: 'wipes',
+    color: '#1c4d6e',
+    image: 'img/productos_limpieza_lentes.jpeg'
+  },
+  {
+    id: 19,
+    name: 'Kit de Limpieza Completo',
+    category: 'accesorios',
+    catLabel: 'Accesorios',
+    price: 580,
+    shape: 'kit',
+    color: '#0a1a26',
+    image: 'img/kit_limpieza_lentes%27.jpeg'
+  },
+  // ---------- Cordones ----------
+  {
+    id: 20,
+    name: 'Cordón con Clip',
+    category: 'accesorios',
+    catLabel: 'Accesorios',
+    price: 180,
+    shape: 'cord',
+    color: '#41566a',
+    image: 'img/cordones_3.jpeg'
   }
 ];
 
@@ -145,13 +247,57 @@ const frameShapes = {
       <path d="M55 50 L110 50 L112 75 L62 75 Z" fill="rgba(10,26,38,0.7)" stroke="${color}" stroke-width="3.5" stroke-linejoin="round"/>
       <path d="M130 50 L185 50 L178 75 L128 75 Z" fill="rgba(10,26,38,0.7)" stroke="${color}" stroke-width="3.5" stroke-linejoin="round"/>
       <line x1="112" y1="62" x2="128" y2="62" stroke="${color}" stroke-width="3.5"/>
+    </svg>`,
+  // Case / estuche
+  case: (color) => `
+    <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="40" width="160" height="42" rx="21" fill="none" stroke="${color}" stroke-width="3.5"/>
+      <line x1="120" y1="40" x2="120" y2="82" stroke="${color}" stroke-width="2"/>
+      <circle cx="60" cy="61" r="2.5" fill="${color}"/>
+      <path d="M155 56 Q165 56 165 61" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round"/>
+    </svg>`,
+  // Cord / cordón
+  cord: (color) => `
+    <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 60 Q70 25 120 60 Q170 95 210 60" fill="none" stroke="${color}" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="30" cy="60" r="7" fill="none" stroke="${color}" stroke-width="3"/>
+      <circle cx="210" cy="60" r="7" fill="none" stroke="${color}" stroke-width="3"/>
+      <rect x="113" y="52" width="14" height="16" rx="2" fill="none" stroke="${color}" stroke-width="2.5"/>
+    </svg>`,
+  // Bottle / líquido limpiador
+  bottle: (color) => `
+    <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="100" y="18" width="40" height="14" rx="3" fill="none" stroke="${color}" stroke-width="3"/>
+      <line x1="105" y1="25" x2="135" y2="25" stroke="${color}" stroke-width="3"/>
+      <path d="M90 32 L150 32 L155 44 L155 95 Q155 105 145 105 L95 105 Q85 105 85 95 L85 44 Z" fill="none" stroke="${color}" stroke-width="3.5"/>
+      <line x1="95" y1="72" x2="145" y2="72" stroke="${color}" stroke-width="2"/>
+      <text x="120" y="90" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="${color}">Avilea</text>
+    </svg>`,
+  // Wipes pack / toallitas limpiadoras
+  wipes: (color) => `
+    <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="32" width="120" height="58" rx="6" fill="none" stroke="${color}" stroke-width="3.5"/>
+      <line x1="60" y1="50" x2="180" y2="50" stroke="${color}" stroke-width="2.5"/>
+      <rect x="100" y="22" width="40" height="14" rx="2" fill="${color}"/>
+      <line x1="80" y1="68" x2="160" y2="68" stroke="${color}" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <line x1="80" y1="78" x2="160" y2="78" stroke="${color}" stroke-width="1.5" stroke-dasharray="4 4"/>
+    </svg>`,
+  // Kit de limpieza (caja con asa)
+  kit: (color) => `
+    <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="35" width="160" height="55" rx="4" fill="none" stroke="${color}" stroke-width="3.5"/>
+      <rect x="100" y="20" width="40" height="18" rx="3" fill="none" stroke="${color}" stroke-width="3"/>
+      <line x1="65" y1="60" x2="80" y2="60" stroke="${color}" stroke-width="2.5"/>
+      <line x1="65" y1="72" x2="80" y2="72" stroke="${color}" stroke-width="2.5"/>
+      <circle cx="120" cy="65" r="10" fill="none" stroke="${color}" stroke-width="2.5"/>
+      <rect x="155" y="58" width="25" height="18" rx="2" fill="none" stroke="${color}" stroke-width="2.5"/>
     </svg>`
 };
 
 const WA_PHONE = '5354519124';
 const waLink = (model, price) => {
   const text = encodeURIComponent(
-    `Hola Avilea, me interesa la armadura "${model}" (${price} MN). ¿Está disponible?`
+    `Hola Avilea, me interesa el producto "${model}" (${price} MN). ¿Está disponible?`
   );
   return `https://wa.me/${WA_PHONE}?text=${text}`;
 };
@@ -165,7 +311,9 @@ function renderCatalog(filter = 'all') {
   grid.innerHTML = items.map(p => `
     <article class="product-card reveal" data-cat="${p.category}">
       <div class="product-image">
-        ${frameShapes[p.shape] ? frameShapes[p.shape](p.color) : ''}
+        ${p.image
+          ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
+          : (frameShapes[p.shape] ? frameShapes[p.shape](p.color) : '')}
       </div>
       <div class="product-body">
         <span class="product-category">${p.catLabel}</span>

@@ -604,7 +604,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .product-image {
   position: relative;
   aspect-ratio: 4/3;
-  background: linear-gradient(135deg, #f6f8fb, #e9eef3);
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -614,7 +614,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 60%, rgba(28,77,110,0.04), transparent 70%);
+  background: transparent;
 }
 .product-image svg {
   width: 75%;
@@ -624,6 +624,16 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 .product-card:hover .product-image svg {
   transform: scale(1.06) rotate(-2deg);
+}
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s var(--ease);
+  filter: drop-shadow(0 6px 10px rgba(15,37,56,0.12));
+}
+.product-card:hover .product-image img {
+  transform: scale(1.04);
 }
 .product-badge {
   position: absolute;

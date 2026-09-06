@@ -8,14 +8,23 @@ const STORAGE_KEY = 'avilea_products';
 
 /* ---------- Catálogo inicial (mismo que el público) ---------- */
 const defaultProducts = [
-  { id: 'p1',  name: 'Aria',            category: 'femenino',  price: 1850, image: null, shape: 'round' },
-  { id: 'p2',  name: 'Nora',            category: 'femenino',  price: 2100, image: null, shape: 'cat' },
-  { id: 'p3',  name: 'Onix',            category: 'masculino', price: 2300, image: null, shape: 'rect' },
-  { id: 'p4',  name: 'Bruno',           category: 'masculino', price: 2450, image: null, shape: 'square' },
-  { id: 'p5',  name: 'Lumen',           category: 'unisex',    price: 1750, image: null, shape: 'round' },
-  { id: 'p6',  name: 'Vento',           category: 'unisex',    price: 1900, image: null, shape: 'rimless' },
-  { id: 'p7',  name: 'Solar Aventura',  category: 'sol',       price: 2200, image: null, shape: 'aviator' },
-  { id: 'p8',  name: 'Solar Tropico',   category: 'sol',       price: 1980, image: null, shape: 'wayfarer' }
+  { id: 'p1',  name: 'Aria',                 category: 'femenino',   price: 1850, image: 'img/espejuelos_1.webp',                shape: 'round' },
+  { id: 'p2',  name: 'Nora',                 category: 'femenino',   price: 2100, image: 'img/espejuelos_2.avif',                shape: 'cat' },
+  { id: 'p3',  name: 'Onix',                 category: 'masculino',  price: 2300, image: 'img/espejuelos_3.jpeg',                shape: 'rect' },
+  { id: 'p4',  name: 'Bruno',                category: 'masculino',  price: 2450, image: 'img/espejuelos_4.webp',                shape: 'square' },
+  { id: 'p5',  name: 'Lumen',                category: 'unisex',     price: 1750, image: 'img/espejuelos_5.jpeg',                shape: 'round' },
+  { id: 'p6',  name: 'Vento',                category: 'unisex',     price: 1900, image: 'img/espejulos_6.jpeg',                 shape: 'rimless' },
+  { id: 'p7',  name: 'Solar Aventura',       category: 'unisex',     price: 2200, image: 'img/espejuelos_7.jpeg',                shape: 'aviator' },
+  { id: 'p8',  name: 'Solar Tropico',        category: 'unisex',     price: 1980, image: 'img/espejuelos_8.jpeg',                shape: 'wayfarer' },
+  { id: 'p9',  name: 'Estuche Rígido',       category: 'accesorios', price: 450,  image: 'img/estuche%3F1.jpg',                  shape: 'case' },
+  { id: 'p10', name: 'Estuche Semirrígido',  category: 'accesorios', price: 280,  image: 'img/estuche%20_2.jpeg',                shape: 'case' },
+  { id: 'p12', name: 'Cordón Deportivo',     category: 'accesorios', price: 220,  image: 'img/cordon%291.webp',                  shape: 'cord' },
+  { id: 'p13', name: 'Cordón de Cuero',      category: 'accesorios', price: 320,  image: 'img/cordones_2.jpeg',                   shape: 'cord' },
+  { id: 'p14', name: 'Líquido Limpiador',    category: 'accesorios', price: 280,  image: 'img/producto_limpieza_lentes.webp',    shape: 'bottle' },
+  { id: 'p15', name: 'Estuche de Tela',      category: 'accesorios', price: 220,  image: 'img/estuche_3.jpg',                     shape: 'case' },
+  { id: 'p17', name: 'Toallitas Limpiadoras x20', category: 'accesorios', price: 320, image: 'img/productos_limpieza_lentes.jpeg', shape: 'wipes' },
+  { id: 'p19', name: 'Kit de Limpieza Completo', category: 'accesorios', price: 580, image: "img/kit_limpieza_lentes%27.jpeg",     shape: 'kit' },
+  { id: 'p20', name: 'Cordón con Clip',      category: 'accesorios', price: 180,  image: 'img/cordones_3.jpeg',                   shape: 'cord' }
 ];
 
 /* ---------- Persistence ---------- */
@@ -26,7 +35,29 @@ function loadProducts() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultProducts));
       return [...defaultProducts];
     }
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    let dirty = false;
+
+    // Migración 1: reclasificar productos antiguos 'sol' → 'unisex' (categoría eliminada)
+    parsed.forEach(p => {
+      if (p.category === 'sol') { p.category = 'unisex'; dirty = true; }
+    });
+
+    // Migración 2: añadir productos nuevos del default que aún no estén por id,
+    // y rellenar imágenes en productos existentes (por si quedaron en null tras una migración anterior)
+    defaultProducts.forEach(dp => {
+      const existing = parsed.find(p => p.id === dp.id);
+      if (!existing) {
+        parsed.push({ ...dp });
+        dirty = true;
+      } else if (!existing.image && dp.image) {
+        existing.image = dp.image;
+        dirty = true;
+      }
+    });
+
+    if (dirty) localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+    return parsed;
   } catch (e) {
     return [...defaultProducts];
   }
@@ -70,7 +101,7 @@ function toast(message, type = 'success') {
 
 /* ---------- Format ---------- */
 const fmtPrice = (n) => Number(n).toLocaleString('es-CU', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-const catLabel = { femenino: 'Femenino', masculino: 'Masculino', unisex: 'Unisex', sol: 'Sol' };
+const catLabel = { femenino: 'Femenino', masculino: 'Masculino', unisex: 'Unisex', accesorios: 'Accesorios' };
 
 /* =============================================
    LOGIN
@@ -232,7 +263,7 @@ function renderRecent() {
 }
 
 function fallbackThumb(p) {
-  const colors = { femenino: '#fce7f3', masculino: '#dbeafe', unisex: '#d1fae5', sol: '#fef3c7' };
+  const colors = { femenino: '#fce7f3', masculino: '#dbeafe', unisex: '#d1fae5', accesorios: '#ede9fe' };
   return `<svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
     <rect width="240" height="120" fill="${colors[p.category] || '#f6f8fb'}"/>
     <circle cx="85" cy="60" r="22" fill="none" stroke="#1c4d6e" stroke-width="3" opacity="0.4"/>
