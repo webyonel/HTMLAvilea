@@ -184,7 +184,8 @@ function bindPanelEvents() {
   });
 
   // sidebar mobile
-  document.getElementById('sidebarToggle').addEventListener('click', () => {
+  document.getElementById('sidebarToggle').addEventListener('click', (e) => {
+    e.stopPropagation();
     document.getElementById('adminShell').classList.toggle('menu-open');
   });
   document.querySelector('.admin-main')?.addEventListener('click', () => {
